@@ -4,9 +4,9 @@ import { Client, Account, ID } from "appwrite";
 //create types (Ts) for the creation of the user and login.
 
 type CreateUserAccount = {
-  name: string;
   email: string;
   password: string;
+  name: string;
 };
 
 type LoginUserAccount = {
@@ -32,13 +32,13 @@ export const account = new Account(appwriteClient);
 
 export class AppwriteService {
   //create a new record of user appwrite..
-  async createUserAccount({ name, email, password }: CreateUserAccount) {
+  async createUserAccount({ email, password, name }: CreateUserAccount) {
     try {
       const userAccount = await account.create(
         ID.unique(),
-        name,
         email,
-        password
+        password,
+        name
       );
       if (userAccount) {
         return this.login({ email, password });
@@ -46,7 +46,7 @@ export class AppwriteService {
         return userAccount;
       }
     } catch (error: any) {
-      throw error("Error creating user account", error);
+      throw error;
     }
   }
 
@@ -55,7 +55,7 @@ export class AppwriteService {
     try {
       return await account.createEmailSession(email, password);
     } catch (error: any) {
-      throw error("Error logging", error);
+      throw error;
     }
   }
 

@@ -28,6 +28,8 @@ const Signup = () => {
       }
     } catch (error: any) {
       setError(error.message);
+      console.log(error);
+      
     }
   };
 

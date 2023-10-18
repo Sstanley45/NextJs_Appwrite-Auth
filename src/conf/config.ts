@@ -1,5 +1,5 @@
 const conf = {
-  appwriteUrl: String(process.env.NEXT_PUBLIC_APPWRITE_URL),
+  appwriteUrl: String(process.env.NEXT_PUBLIC_APPWRITE),
   appwriteProjectId: String(process.env.NEXT_PUBLIC_APPWRITE_PROJECT_ID),
 };
 
